@@ -23,35 +23,11 @@ public class Authentication {
     }
 
     private String login;
-    private byte[] password;
 
     public Authentication(String login, String password) throws NoSuchAlgorithmException {
         this.md = MessageDigest.getInstance("MD5");
         this.login = login;
-        this.password = this.md.digest(password.getBytes());
-    }
-
-    public boolean Authenticate(){
         List<User> users = UserFunctions.getUsersByLogin(login);
-        if (users.isEmpty()){
-            return false;
-        }
-        for (User user: users) {
-            StringBuilder sb = new StringBuilder();
-            for(int i=0; i< password.length ;i++)
-            {
-                sb.append(password[i]);
-            }
-            byte[] salt = md.digest(user.getSalt().getBytes());
-            for(int i=0; i< salt.length ;i++)
-            {
-                sb.append(salt[i]);
-            }
-            if (sb.toString() == user.getPassword()){
-                employee = user.getEmployee();
-                return true;
-            }
-        }
-        return false;
+        employee = UserFunctions.getAuthentificatedUser(password, users);
     }
 }
