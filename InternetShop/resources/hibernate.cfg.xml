@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+
+        <property name="connection.url">jdbc:mysql://localhost:3306/javaee002</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">root</property>
+
+        <!-- Підключення драйвера -->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+
+        <!-- Режими роботи фреймворка
+            -create - Створення схеми БД
+            -update - Обновлення ( синхронізація)
+            -create-drop - створення схеми БД і видалення результатів дійсності додатків
+             по закінченню роботи -->
+        <property name="hbm2ddl.auto">create</property>
+
+        <property name="connection.pool_size">3</property> <!--відповідає за то шо у нас
+          к-ть зєднань(активні зєднанн<
+-->
+        <property name="hibernate.show_sql">true</property> <!-- щоб інфу було видно в консолі-->
+
+        <mapping class="entity.User"/>
+        <mapping class="entity.Employee"/>
+
+    </session-factory>
+</hibernate-configuration>
