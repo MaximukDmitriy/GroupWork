@@ -1,4 +1,4 @@
-package entity;
+package entities;
 
 import javax.persistence.*;
 
@@ -11,7 +11,7 @@ public class Employee {
 
     @Id
     @Column(name = "HUMAN_ID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long userNum;
 
     @Column(name = "NAME")

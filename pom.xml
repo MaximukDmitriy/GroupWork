@@ -8,9 +8,10 @@
     <artifactId>GroupWork</artifactId>
 
     <packaging>pom</packaging>
-    <version>1.0</version>
+    <version>1.0-SNAPSHOT</version>
 
     <modules>
+        <!--module>InternetShop</module-->
     </modules>
 
     <properties>
@@ -60,6 +61,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>

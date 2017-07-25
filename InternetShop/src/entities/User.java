@@ -1,11 +1,8 @@
-package entity;
+package entities;
 
 import enums.Role;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.security.MessageDigest;
 import java.util.Arrays;
 
@@ -16,6 +13,7 @@ import java.util.Arrays;
 @Table(name = "USERS")
 public class User {
 
+    @Id
     @Column(name = "LOGIN")
     private StringBuffer userID;
 

@@ -32,6 +32,7 @@ public class FirmaTest {
     }
     private static String getSecurePassword(String passwordToHash, byte[] salt)
     {
+
         String generatedPassword = null;
         try {
             // Створюємо MessageDigest для MD5
