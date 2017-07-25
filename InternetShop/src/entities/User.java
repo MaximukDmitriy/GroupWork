@@ -14,14 +14,18 @@ import java.util.Arrays;
 public class User {
 
     @Id
+    @Column(name = "USERID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int userID;
+
     @Column(name = "LOGIN")
-    private StringBuffer userID;
+    private String login;
 
     @Column(name = "PASSWORD")
-    private MessageDigest password;
+    private String password;
 
-    @Column(name = "SALT_TO_PASS")
-    private byte[] salt;
+    @Column(name = "SALT")
+    private String salt;
 
     @Column(name = "ROLE")
     private Role role;
@@ -31,12 +35,12 @@ public class User {
 
     public User(){}
 
-    public User(StringBuffer userID, MessageDigest password, byte[] salt, Role role, Employee employee) {
-        userID = new StringBuffer(25);
+    public User(String login, String password, String salt, Role role, Employee employee) {
+        this.login = login;
         this.password = password;
         this.salt = salt;
         this.role = role;
-        this.employee= employee;
+        this.employee = employee;
     }
 
     public Employee getEmployee() {
@@ -47,15 +51,11 @@ public class User {
         this.employee = employee;
     }
 
-    public void setUserID(StringBuffer userID) {
-        this.userID = userID;
-    }
-
-    public void setPassword(MessageDigest password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
-    public void setSalt(byte[] salt) {
+    public void setSalt(String salt) {
         this.salt = salt;
     }
 
@@ -63,49 +63,32 @@ public class User {
         this.role = role;
     }
 
-    public StringBuffer getUserID() {
+    public int getUserID() {
         return userID;
     }
 
-    public MessageDigest getPassword() {
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
         return password;
     }
 
-    public byte[] getSalt() {
+    public String getSalt() {
         return salt;
     }
 
     public Role getRole() {
         return role;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof User)) return false;
-
-        User user = (User) o;
-
-        if (getPassword() != null ? !getPassword().equals(user.getPassword()) : user.getPassword() != null)
-            return false;
-        return Arrays.equals(getSalt(), user.getSalt());
-    }
-
-    @Override
-    public int hashCode() {
-        int result = getPassword() != null ? getPassword().hashCode() : 0;
-        result = 31 * result + Arrays.hashCode(getSalt());
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "userID=" + userID +
-                ", password=" + password +
-                ", salt=" + Arrays.toString(salt) +
-                ", role=" + role +
-                '}';
     }
 }
 

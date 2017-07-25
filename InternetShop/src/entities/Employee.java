@@ -10,9 +10,9 @@ import javax.persistence.*;
 public class Employee {
 
     @Id
-    @Column(name = "HUMAN_ID")
+    @Column(name = "EMPLOYEEID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long userNum;
+    private  Long employeeId;
 
     @Column(name = "NAME")
     private String name;
@@ -23,27 +23,23 @@ public class Employee {
     @Column(name = "AGE")
     private String age;
 
-    @Column(name = "DateBegin")
+    @Column(name = "DATEBEGIN")
     private String dateBegin;
 
     @Column(name = "POSITION")
     private String position;
-
-    @Column(name = "User_id")
-    private User userId;
 
     @OneToOne
     private User user;
 
     public Employee (){}
 
-    public Employee(String name, String surname, String age, String dateBegin, String position, User userId,User user) {
+    public Employee(String name, String surname, String age, String dateBegin, String position, User user) {
         this.name = name;
         this.surname = surname;
         this.age = age;
         this.dateBegin = dateBegin;
         this.position = position;
-        this.userId = userId;
         this.user = user;
     }
 
@@ -55,12 +51,12 @@ public class Employee {
         this.user = user;
     }
 
-    public Long getUserNum() {
-        return userNum;
+    public Long getEmployeeId() {
+        return employeeId;
     }
 
-    public void setUserNum(Long userNum) {
-        this.userNum = userNum;
+    public void setEmployeeId(Long userNum) {
+        this.employeeId = userNum;
     }
 
     public String getName() {
@@ -101,13 +97,5 @@ public class Employee {
 
     public void setPosition(String position) {
         this.position = position;
-    }
-
-    public User getUserId() {
-        return userId;
-    }
-
-    public void setUserId(User userId) {
-        this.userId = userId;
     }
 }
