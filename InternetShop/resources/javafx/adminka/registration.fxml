@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="260.0">
          <children>
@@ -75,10 +75,11 @@
                   </AnchorPane>
                   <AnchorPane prefHeight="26.0" prefWidth="326.0">
                      <children>
-                        <HBox layoutX="128.0" prefHeight="26.0" prefWidth="198.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <HBox layoutX="33.0" prefHeight="26.0" prefWidth="293.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="98.5" text="Register" />
-                              <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="98.5" text="Log Off" />
+                              <Button fx:id="btnReg" mnemonicParsing="false" onAction="#onActionRegClick" prefHeight="26.0" prefWidth="98.5" text="Register" />
+                              <Button fx:id="btnLogOff" mnemonicParsing="false" onAction="#onActionLogOffClick" prefHeight="26.0" prefWidth="98.5" text="Log Off" />
+                              <Button fx:id="btnCancel" layoutX="109.0" layoutY="10.0" mnemonicParsing="false" onAction="#onActionCancelClick" prefHeight="26.0" prefWidth="98.5" text="Cancel" />
                            </children>
                         </HBox>
                      </children>

@@ -8,8 +8,8 @@ public class login extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        primaryStage.setTitle("Chat");
-        Parent root = FXMLLoader.load(getClass().getResource("/javafx/adminka/registration.fxml"));
+        primaryStage.setTitle("Internet Shop");
+        Parent root = FXMLLoader.load(getClass().getResource("/javafx/adminka/login.fxml"));
         Scene main = new Scene(root);
         primaryStage.setScene(main);
         primaryStage.show();
