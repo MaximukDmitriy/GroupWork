@@ -3,27 +3,15 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class Controller {
+public class ControllerRegistration {
 
-    @FXML
-    private Button btnLogIn;
-    @FXML
-    private Button btnCancel;
     @FXML
     private Button btnReg;
     @FXML
     private Button btnLogOff;
     @FXML
-    private Button menuManagement;
+    private Button btnCancel;
 
-
-    @FXML private void onActionManagementClick() {
-
-    }
-
-    @FXML private void onActionLogInClick() {
-
-    }
 
     @FXML private void onActionRegClick() {
 
