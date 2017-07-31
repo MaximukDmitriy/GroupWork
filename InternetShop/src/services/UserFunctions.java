@@ -28,7 +28,7 @@ public class UserFunctions {
         return values.get(0);
     }
 
-    public static Employee getAuthentificatedUser(String password, String userNsme) throws NoSuchAlgorithmException {
+    public static Employee getAuthentificatedUser(String userNsme, String password) throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("MD5");
         byte[] pass = md.digest(password.getBytes());
         User user = getUsersByLogin(userNsme);

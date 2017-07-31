@@ -4,6 +4,7 @@ import entities.Employee;
 import entities.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import models.Authentication;
 import services.UserFunctions;
 
 import java.security.NoSuchAlgorithmException;
@@ -19,15 +20,15 @@ public class ControllerLogin {
     @FXML
     private Button btnCancel;
 
-    private Employee employee;
+    private Authentication authentication;
 
-    public Employee getEmployee() {
-        return employee;
+    public Authentication getAuthentication() {
+        return authentication;
     }
 
     @FXML
     private void onActionLoginClick() throws NoSuchAlgorithmException {
-        employee = UserFunctions.getAuthentificatedUser(fldPassword.getText() ,fldLogin.getText());
+        authentication = new Authentication(fldLogin.getText(), fldPassword.getText());
     }
 
     @FXML private void onActionCancelClick() {

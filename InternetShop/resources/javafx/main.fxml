@@ -7,7 +7,7 @@
     <top>
     <MenuBar BorderPane.alignment="CENTER">
       <menus>
-        <Menu fx:id="btnManagement" mnemonicParsing="false" onAction="#onActionManagementClick" text="User management" />
+        <Menu fx:id="mnuManagement" mnemonicParsing="false" onAction="#onActionManagementClick" text="User management" />
       </menus>
     </MenuBar>
     </top>

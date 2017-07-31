@@ -11,7 +11,6 @@ import java.util.List;
 
 public class Authentication {
 
-    private final MessageDigest md;
     private Employee employee;
 
     public boolean IsAdmin(){
@@ -23,7 +22,6 @@ public class Authentication {
     }
 
     public Authentication(String login, String password) throws NoSuchAlgorithmException {
-        this.md = MessageDigest.getInstance("MD5");
-        employee = UserFunctions.getAuthentificatedUser(password, UserFunctions.getUsersByLogin(login));
+        employee = UserFunctions.getAuthentificatedUser(login, password);
     }
 }

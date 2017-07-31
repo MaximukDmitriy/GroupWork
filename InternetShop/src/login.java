@@ -1,4 +1,6 @@
 import controllers.ControllerLogin;
+import controllers.ControllerMain;
+import entities.Employee;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -6,12 +8,15 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import models.Authentication;
 
 import java.io.IOException;
 
 public class login extends Application {
     private Stage primaryStage;
     private BorderPane rootLayout;
+    private Authentication authentication;
+    private ControllerMain mainController;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -34,6 +39,7 @@ public class login extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/javafx/main.fxml"));
             rootLayout = loader.load();
+            mainController = loader.getController();
             // Отображаем сцену, содержащую корневой макет.
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
@@ -52,6 +58,7 @@ public class login extends Application {
             ControllerLogin login = loader.getController();
             // Помещаем сведения об адресатах в центр корневого макета.
             rootLayout.setCenter(personOverview);
+            mainController.setAuthentification(login.getAuthentication());
         } catch (IOException e) {
             e.printStackTrace();
         }
