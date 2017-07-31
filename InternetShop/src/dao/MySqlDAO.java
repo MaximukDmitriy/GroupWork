@@ -82,7 +82,7 @@ public class MySqlDAO <T> implements DAO {
 
 
 
-       List<T> results= session.createQuery(query).getParameters().list();
+       List<T> results= session.createQuery(query).setParameters("params",params).list();
 
 
 
