@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import utilities.HibernateUtil;
 
+import javax.persistence.Entity;
 import java.util.List;
 
 public class MySqlDAO <T> implements DAO {
@@ -79,14 +80,11 @@ public class MySqlDAO <T> implements DAO {
 
         session.beginTransaction();
 
-        query = " FROM entities.User U name =:name," +
-               "surname =:surname," +
-               "age =: age," +
-               "dateBegin =: dateBegin," +
-               "position =: position where id =:id";
 
-       Query query1 = session.createQuery(query);
-       List results = query1.list();
+
+       List<T> results= session.createQuery(query).getParameters().list();
+
+
 
 
         return results;
