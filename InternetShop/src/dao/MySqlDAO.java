@@ -8,7 +8,10 @@ import org.hibernate.SessionFactory;
 import utilities.HibernateUtil;
 
 import javax.persistence.Entity;
+import java.io.StringReader;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MySqlDAO <T> implements DAO {
 
@@ -76,14 +79,23 @@ public class MySqlDAO <T> implements DAO {
     @Override
     public <T> List<T> readByQuery(String query, Parameters params)
     {
+        String key = null ;
+        Object value = null ;
         Session session = factory.openSession();
 
         session.beginTransaction();
 
 
+             Map < String, Object> hashmap = new HashMap<String, Object>((Map<? extends String, ?>) params);
 
-       List<T> results= session.createQuery(query).setProperties(Parameters.class).list();
+        for (Map.Entry<String , Object> e : hashmap.entrySet()) {
+             key = e.getKey();
+             value = e.getValue();
+        }
 
+
+
+        List<T> results= session.createQuery(query).setParameter(key,value).list();
        session.getTransaction().commit();
        session.close();
 
