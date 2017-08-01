@@ -86,17 +86,15 @@ public class MySqlDAO <T> implements DAO {
         session.beginTransaction();
 
 
-             Map < String, Object> hashmap = new HashMap<String, Object>((Map<? extends String, ?>) params);
+         //    Map < String, Object> hashmap = new HashMap<String, Object>((Map<? extends String, ?>) params);
 
-        for (Map.Entry<String , Object> e : hashmap.entrySet()) {
-             key = e.getKey();
-             value = e.getValue();
-        }
+       for (Map.Entry<String , Object> e : params.getParameters().entrySet()) {
+           key = e.getKey();
+           value = e.getValue();
+       }
 
 
-
-        List<T> results= session.createQuery(query).setParameter(key,value).list();
-       session.getTransaction().commit();
+        List results = session.createQuery(query).setParameter(key,value).list();
        session.close();
 
 
