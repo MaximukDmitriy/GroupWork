@@ -65,7 +65,7 @@ public class MySqlDAO <T> implements DAO {
         Object empl = null;
         session.beginTransaction();
 
-        empl = (Employee)session.load(Employee.class, id);
+        empl = session.load(Employee.class, id);
         Hibernate.initialize(empl);
 
 
@@ -73,7 +73,7 @@ public class MySqlDAO <T> implements DAO {
         session.getTransaction().commit();
 
 
-        return  T empl;
+        return  (T) empl;
     }
 
     @Override
