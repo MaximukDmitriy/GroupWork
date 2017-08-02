@@ -44,8 +44,8 @@
                   <Insets />
                </opaqueInsets>
             </Label>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="fldLogin" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="fldPassword" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <children>
                   <HBox layoutY="51.0" prefHeight="0.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
