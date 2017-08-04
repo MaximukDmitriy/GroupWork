@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerLogin">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ControllerLogin">
    <children>
       <GridPane prefHeight="200.0" prefWidth="500.0" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="4.0">
         <columnConstraints>
@@ -50,7 +50,7 @@
                <children>
                   <HBox layoutY="51.0" prefHeight="0.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Button fx:id="btnLogIn" mnemonicParsing="false" onAction="#onActionLogInClick" prefHeight="29.0" prefWidth="121.0" text="Log In">
+                        <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#onActionLoginClick" prefHeight="29.0" prefWidth="121.0" text="Log In">
                            <font>
                               <Font size="15.0" />
                            </font>

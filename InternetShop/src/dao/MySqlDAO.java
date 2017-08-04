@@ -17,7 +17,7 @@ public class MySqlDAO <T> implements DAO {
 
     private SessionFactory factory;
 
-    public MySqlDAO(SessionFactory factory) {
+    public MySqlDAO() {
         factory = HibernateUtil.getFactory();
     }
 
@@ -62,10 +62,10 @@ public class MySqlDAO <T> implements DAO {
 
         Session session = factory.openSession();
 
-        Object empl = null;
         session.beginTransaction();
-
-        empl = session.load(Employee.class, id);
+        //todo Ми тут використовуємо Generic для того щоб узагальнити тип з яким ми будемо працювати
+        //empl = (Employee)session.load(Employee.class, id);
+        T empl = session.load((Class<T>)getClass(), id);
         Hibernate.initialize(empl);
 
 

@@ -1,5 +1,8 @@
 package services;
 
+import dao.DAO;
+import dao.MySqlDAO;
+import dao.Parameters;
 import entities.Employee;
 import entities.User;
 
@@ -9,30 +12,41 @@ import java.util.List;
 
 public class UserFunctions {
 
-    public static List<User> getUsersByLogin(String login){
-        return null;
+    private static DAO dao;
+
+    public UserFunctions() {
+        dao = new MySqlDAO<User>();
     }
 
-    public static Employee getAuthentificatedUser(String password, List<User> users) throws NoSuchAlgorithmException {
-        MessageDigest md = MessageDigest.getInstance("MD5");
-        byte[] pass = md.digest(password.getBytes());
-        if (users.isEmpty()){
+    private static User getUsersByLogin(String login){
+        Parameters params = new Parameters();
+        params.addParam("LOGIN", login);
+        List<User> values = dao.readByQuery("from USERS where LOGIN = :LOGIN", params);
+        if (values.isEmpty()){
             return null;
         }
-        for (User user: users) {
-            StringBuilder sb = new StringBuilder();
-            for(int i=0; i< pass.length ;i++)
-            {
-                sb.append(pass[i]);
-            }
-            byte[] salt = md.digest(user.getSalt().getBytes());
-            for(int i=0; i< salt.length ;i++)
-            {
-                sb.append(salt[i]);
-            }
-            if (sb.toString() == user.getPassword()){
-                return user.getEmployee();
-            }
+        return values.get(0);
+    }
+
+    public static Employee getAuthentificatedUser(String userNsme, String password) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        byte[] pass = md.digest(password.getBytes());
+        User user = getUsersByLogin(userNsme);
+        if (user == null){
+            return null;
+        }
+        StringBuilder sb = new StringBuilder();
+        for(int i=0; i< pass.length ;i++)
+        {
+            sb.append(pass[i]);
+        }
+        byte[] salt = md.digest(user.getSalt().getBytes());
+        for(int i=0; i< salt.length ;i++)
+        {
+            sb.append(salt[i]);
+        }
+        if (sb.toString() == user.getPassword()){
+            return user.getEmployee();
         }
         return null;
     }
