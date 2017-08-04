@@ -77,19 +77,29 @@ public class MySqlDAO <T> implements DAO {
     }
 
     @Override
-    public <T> List<T> readByQuery(String query, Parameters params) {
-        String key = null;
-        Object value = null;
+    public <T> List<T> readByQuery(String query, Parameters params)
+    {
+        String key = null ;
+        Object value = null ;
         Session session = factory.openSession();
 
         session.beginTransaction();
-        Query q = session.createQuery(query);
-        for (Map.Entry<String, Object> e : params.getParameters().entrySet()) {
-            q.setParameter(e.getKey(), e.getValue());
+
+
+             Map < String, Object> hashmap = new HashMap<String, Object>((Map<? extends String, ?>) params);
+
+        for (Map.Entry<String , Object> e : hashmap.entrySet()) {
+             key = e.getKey();
+             value = e.getValue();
         }
-        List<T> results = q.list();
-        session.getTransaction().commit();
-        session.close();
+
+
+
+        List<T> results= session.createQuery(query).setParameter(key,value).list();
+       session.getTransaction().commit();
+       session.close();
+
+
 
 
         return results;

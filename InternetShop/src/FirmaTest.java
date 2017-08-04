@@ -1,10 +1,3 @@
-import entities.User;
-import enums.Role;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.sql.ordering.antlr.Factory;
-import utilities.HibernateUtil;
-
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
@@ -17,23 +10,12 @@ public class FirmaTest {
 
     public static void main(String[] args) throws NoSuchProviderException, NoSuchAlgorithmException {
 
-        String passToHash = "admin";
+        String passToHash = "qwerty";
         byte [] salt = getSalt();
 
         String securePassword = getSecurePassword(passToHash, salt);
 
-        //String regeneratedPassowrdToVerify = getSecurePassword(passToHash, salt);
-
-        SessionFactory factory = HibernateUtil.getFactory();
-        Session session = factory.openSession();
-        User user = new User();
-        user.setLogin("ADMIN");
-        user.setPassword(securePassword);
-        user.setRole(Role.ADMIN);
-        user.setSalt(salt.toString());
-        session.save(user);
-        session.getTransaction().commit();
-        session.close();
+        String regeneratedPassowrdToVerify = getSecurePassword(passToHash, salt);
 
     }
 
@@ -56,15 +38,16 @@ public class FirmaTest {
             // Створюємо MessageDigest для MD5
             MessageDigest md = MessageDigest.getInstance("MD5");
             // додаємо пароль до digest
-            byte[] cryptedSalt = md.digest(salt);
+            md.update(salt);
             //отримуємо hash байти
+            byte[] bytes = md.digest(passwordToHash.getBytes());
+            // вони в десятковому формтаі, перетворюємо до 16
             StringBuilder sb = new StringBuilder();
-            sb.append(passwordToHash);
-            sb.append(cryptedSalt);
-
-            byte[] bytes = md.digest(sb.toString().getBytes());
-            sb = new StringBuilder();
-            sb.append(md.digest(bytes));
+            for(int i=0; i< bytes.length ;i++)
+            {
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            // Отримуємо пароь в 16-му форматі
             generatedPassword = sb.toString();
         }
         catch (NoSuchAlgorithmException e) {

@@ -3,6 +3,8 @@ package entities;
 import enums.Role;
 
 import javax.persistence.*;
+import java.security.MessageDigest;
+import java.util.Arrays;
 
 /**
  * Created by Julia on 24.07.2017.
