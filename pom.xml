@@ -16,7 +16,7 @@
 
     <properties>
         <org.junit.ver>4.12</org.junit.ver>
-        <org.mysql.version>5.1.40</org.mysql.version>
+        <org.mysql.version>8.0.7-dmr</org.mysql.version>
         <org.hibernate.version>5.0.2.Final</org.hibernate.version>
     </properties>
 
@@ -44,14 +44,19 @@
             <artifactId>hibernate-entitymanager</artifactId>
             <version>${org.hibernate.version}</version>
         </dependency>
-
-        <!-- Подключение MySQL Connector -->
+        <!-- https://mvnrepository.com/artifact/org.jboss.logging/jboss-logging -->
+        <dependency>
+            <groupId>org.jboss.logging</groupId>
+            <artifactId>jboss-logging</artifactId>
+            <version>3.1.0.CR1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${org.mysql.version}</version>
-
         </dependency>
+
     </dependencies>
 
     <build>

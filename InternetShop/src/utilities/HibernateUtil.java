@@ -13,9 +13,8 @@ public class HibernateUtil {
     private static StandardServiceRegistry registry;
 
     private static SessionFactory build() {
-        registry = new StandardServiceRegistryBuilder()
-                .configure("hibernate.cfg.xml")
-                .build();
+        StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml");
+        registry  = builder.build();
         return new MetadataSources(registry).buildMetadata().buildSessionFactory();
     }
 
