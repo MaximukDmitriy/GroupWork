@@ -4,6 +4,7 @@ import entities.Employee;
 import entities.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import models.Authentication;
 import services.UserFunctions;
 
@@ -12,9 +13,9 @@ import java.security.NoSuchAlgorithmException;
 public class ControllerLogin {
 
     @FXML
-    private Button fldLogin;
+    private TextField fldLogin;
     @FXML
-    private Button fldPassword;
+    private TextField fldPassword;
     @FXML
     private Button btnLogin;
     @FXML
